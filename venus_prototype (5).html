@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VENUS: AI Safety Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+
+/* ── LANDING PAGE ── */
+--hand:'Caveat',cursive;
+
+.landing{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:48px 24px;
+  background:
+    radial-gradient(ellipse 60% 52% at 10% 15%, rgba(196,97,74,.14) 0%, transparent 62%),
+    radial-gradient(ellipse 50% 60% at 90% 10%, rgba(93,140,138,.13) 0%, transparent 62%),
+    radial-gradient(ellipse 55% 48% at 78% 82%, rgba(139,124,174,.22) 0%, transparent 62%),
+    radial-gradient(ellipse 48% 55% at 12% 80%, rgba(110,158,120,.11) 0%, transparent 62%),
+    radial-gradient(ellipse 35% 38% at 92% 45%, rgba(139,124,174,.16) 0%, transparent 55%),
+    #EDE6DC;
+  background-attachment:fixed;
+}
+.landing-inner{
+  max-width:560px;
+  width:100%;
+}
+.landing-stamp{
+  font-family:var(--hand);
+  font-size:13px;
+  color:var(--tc);
+  letter-spacing:.04em;
+  margin-bottom:12px;
+  transform:rotate(-1.5deg);
+  display:inline-block;
+}
+.landing-title{
+  font-family:var(--serif);
+  font-size:52px;
+  font-weight:600;
+  color:var(--text);
+  line-height:1;
+  margin-bottom:6px;
+  letter-spacing:-.02em;
+}
+.landing-title .venus-mark{
+  color:var(--lila);
+}
+.landing-squiggle{
+  margin:14px 0 28px;
+  width:80px;
+  height:12px;
+}
+.landing-text{
+  font-family:var(--serif);
+  font-size:18px;
+  color:var(--text2);
+  line-height:1.75;
+  font-weight:400;
+  margin-bottom:36px;
+}
+.landing-text em{
+  font-style:italic;
+  color:var(--text);
+}
+.landing-note{
+  font-family:var(--hand);
+  font-size:14px;
+  color:var(--text3);
+  margin-bottom:28px;
+  transform:rotate(-.5deg);
+  display:block;
+}
+.landing-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 28px;
+  background:var(--lila);
+  color:#fff;
+  border:none;
+  border-radius:100px;
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .2s;
+  box-shadow:0 4px 18px rgba(139,124,174,.35);
+}
+.landing-btn:hover{
+  background:#7A6B9E;
+  transform:translateY(-2px);
+  box-shadow:0 6px 24px rgba(139,124,174,.45);
+}
+.landing-corner{
+  position:absolute;
+  font-family:var(--hand);
+  font-size:11px;
+  color:var(--text3);
+  bottom:20px;
+  right:24px;
+  transform:rotate(1deg);
+}
+
+  --peach:#F4A07A;--peach-light:#FFE8DC;--peach-mid:#FECDB8;
+  --blue:#7BB3E0;--blue-light:#DAF0FF;--blue-mid:#B8D9F5;
+  --yellow:#E8C14A;--yellow-light:#FFF5C2;--yellow-mid:#FFE99A;
+  --lavender:#B89EE0;--lavender-light:#EDE4FF;
+  --mint:#6DBFA8;--mint-light:#D4F5EC;
+  --text:#2A2320;--text2:#7A6E6A;--text3:#B0A49E;
+  --tc:#C4614A;--tc-light:#F2E4DE;--tc-mid:#E8BFB3;
+  --sage:#6E9E78;--sage-light:#E2EDDF;--sage-mid:#B8D4BB;
+  --teal:#5D8C8A;--teal-light:#DFF0EE;--teal-mid:#AECFCC;
+  --lila:#8B7CAE;--lila-light:#EDE8F5;--lila-mid:#C4BADF;
+  --olive:#9E8B46;--olive-light:#F5EED4;--olive-mid:#D4C280;
+  --surface:rgba(252,248,243,.88);--surface2:rgba(252,248,243,.60);
+  --border:rgba(180,155,135,.35);--border2:rgba(160,130,110,.45);
+  --shadow:0 2px 8px rgba(80,50,30,.06),0 8px 32px rgba(80,50,30,.07);
+  --serif:'Cormorant Garamond','Georgia',serif;
+  --sans:'Plus Jakarta Sans','Helvetica Neue',sans-serif;
+  --radius:14px;--radius-sm:8px;
+}
+body{
+  font-family:var(--sans);font-size:14px;color:var(--text);min-height:100vh;
+  background:
+    radial-gradient(ellipse 60% 52% at 10% 15%, rgba(196,97,74,.14)  0%, transparent 62%),
+    radial-gradient(ellipse 50% 60% at 90% 10%, rgba(93,140,138,.13)  0%, transparent 62%),
+    radial-gradient(ellipse 58% 52% at 78% 82%, rgba(139,124,174,.22) 0%, transparent 62%),
+    radial-gradient(ellipse 48% 55% at 12% 80%, rgba(110,158,120,.11) 0%, transparent 62%),
+    radial-gradient(ellipse 38% 42% at 48% 48%, rgba(158,139,70,.08)  0%, transparent 58%),
+    radial-gradient(ellipse 35% 38% at 92% 45%, rgba(139,124,174,.16) 0%, transparent 55%),
+    #EDE6DC;
+  background-attachment:fixed;
+}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:rgba(255,255,255,.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--lila);letter-spacing:-.01em;line-height:1}
+.logo-divider{width:1px;height:26px;background:var(--border2)}
+.logo-sub{font-size:11px;color:var(--text3);font-family:var(--sans);font-weight:400;line-height:1.5}
+.hdr-pills{display:flex;gap:6px}
+.pill{font-size:9px;font-family:var(--sans);font-weight:500;padding:4px 10px;border-radius:100px;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--border2);color:var(--text3);background:rgba(255,255,255,.6)}
+.steps-wrap{background:rgba(255,255,255,.70);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;display:flex;align-items:stretch;overflow-x:auto}
+.step{display:flex;align-items:center;gap:9px;padding:12px 16px;cursor:default;border-bottom:2.5px solid transparent;font-size:11px;font-family:var(--sans);font-weight:500;color:var(--text3);letter-spacing:.02em;white-space:nowrap;transition:color .2s;user-select:none}
+.step.active{color:var(--lila);border-bottom-color:var(--lila)}
+.step.done{color:var(--sage)}
+.snum{width:20px;height:20px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;font-weight:600}
+.step.done .snum{background:var(--sage);border-color:var(--sage);color:#fff;font-size:12px}
+.step-sep{width:20px;height:1px;background:var(--border);align-self:center;flex-shrink:0}
+.main{max-width:860px;margin:0 auto;padding:32px 22px}
+.panel{display:none}
+.panel.active{display:block;animation:up .22s ease}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{background:var(--surface);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:16px;box-shadow:var(--shadow)}
+.card-hd{font-family:var(--serif);font-size:24px;font-weight:500;margin-bottom:4px;line-height:1.2;color:var(--text)}
+.card-sub{font-size:11px;color:var(--text3);font-family:var(--sans);font-weight:400;margin-bottom:24px;letter-spacing:.01em}
+.mode-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.mode-opt{padding:18px;border:1.5px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all .18s;background:rgba(255,255,255,.45)}
+.mode-opt:hover{background:rgba(255,255,255,.7);border-color:var(--border2)}
+.mode-opt.on{border-color:var(--lila);background:var(--lila-light)}
+.mode-opt-icon{font-size:22px;margin-bottom:8px}
+.mode-opt-title{font-family:var(--serif);font-size:15px;font-weight:600;margin-bottom:4px;color:var(--text)}
+.mode-opt-desc{font-size:11px;color:var(--text3);line-height:1.55;font-family:var(--sans)}
+.mode-opt.on .mode-opt-title{color:var(--lila)}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:5px}
+label{font-size:10px;font-family:var(--sans);font-weight:600;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:3px}
+input[type=text],select,textarea{background:rgba(255,255,255,.65);border:1.5px solid var(--border2);border-radius:var(--radius-sm);padding:9px 13px;color:var(--text);font-size:13px;font-family:var(--sans);width:100%;outline:none;transition:border .18s,background .18s;-webkit-appearance:none;font-weight:400}
+input:focus,select:focus,textarea:focus{border-color:var(--lila);background:rgba(255,255,255,.9)}
+select option{background:#fff;color:var(--text);font-family:var(--sans)}
+textarea{resize:vertical;min-height:72px}
+.tg{display:flex;gap:7px;flex-wrap:wrap}
+.tog{padding:7px 16px;border-radius:100px;border:1.5px solid var(--border2);background:rgba(255,255,255,.5);color:var(--text2);font-size:12px;cursor:pointer;transition:all .15s;font-family:var(--sans);font-weight:400}
+.tog:hover{background:rgba(255,255,255,.8)}
+.tog.on{border-color:var(--lila);background:var(--lila-light);color:var(--lila);font-weight:500}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:20px}
+.topic-chip{padding:14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;background:rgba(255,255,255,.45)}
+.topic-chip:hover{background:rgba(255,255,255,.75);border-color:var(--border2)}
+.tc-icon{font-size:20px;margin-bottom:6px}
+.tc-name{font-size:12px;font-weight:600;color:var(--text);font-family:var(--sans)}
+.tc-desc{font-size:10px;color:var(--text3);margin-top:3px;line-height:1.4;font-family:var(--sans)}
+.topic-chip.on{border-color:var(--lila);background:var(--lila-light)}
+.topic-chip.on .tc-name{color:var(--lila)}
+.btn{padding:10px 24px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:var(--sans);transition:all .18s}
+.btn-p{background:var(--lila);color:#fff;box-shadow:0 2px 12px rgba(139,124,174,.35)}.btn-p:hover{background:#7A6B9E;transform:translateY(-1px);box-shadow:0 4px 18px rgba(139,124,174,.45)}
+.btn-g{background:rgba(255,255,255,.6);border:1.5px solid var(--border2);color:var(--text2)}.btn-g:hover{background:rgba(255,255,255,.9)}
+.btn-row{display:flex;gap:10px;margin-top:24px}
+.tier-badge{display:inline-flex;align-items:center;gap:9px;padding:10px 18px;border-radius:100px;font-size:13px;font-weight:500;font-family:var(--sans)}
+.t-high{background:rgba(196,97,74,.10);border:1.5px solid rgba(196,97,74,.30);color:#A04030}
+.t-limited{background:var(--olive-light);border:1.5px solid var(--olive-mid);color:#8A6010}
+.t-minimal{background:var(--sage-light);border:1.5px solid rgba(110,158,120,.4);color:#1A7A60}
+.t-prohibited{background:rgba(130,50,70,.08);border:1.5px solid rgba(130,50,70,.25);color:#7A2040}
+.tdot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.shd{font-size:10px;font-family:var(--sans);font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin:22px 0 12px;display:flex;align-items:center;gap:12px}
+.shd::after{content:'';flex:1;height:1px;background:var(--border)}
+.info-box{background:rgba(255,255,255,.5);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;font-size:12px;color:var(--text2);line-height:1.75;font-family:var(--sans)}
+.info-box strong{color:var(--text);font-weight:600}
+.nist-item{padding:11px 14px;border-left:2.5px solid var(--teal-mid);background:rgba(255,255,255,.45);border-radius:0 6px 6px 0;margin-bottom:8px}
+.nist-id{font-size:10px;font-family:var(--sans);font-weight:700;color:var(--teal);margin-bottom:3px;letter-spacing:.04em}
+.nist-txt{font-size:12px;color:var(--text2);line-height:1.55;font-family:var(--sans)}
+.dim-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dim-row{display:flex;align-items:center;gap:10px}
+.dim-name{font-size:11px;font-family:var(--sans);font-weight:500;color:var(--text2);width:100px;flex-shrink:0}
+.dim-track{flex:1;height:8px;background:rgba(200,185,175,.2);border-radius:4px;overflow:hidden;border:1px solid var(--border)}
+.dim-fill{height:100%;border-radius:4px;transition:width .7s ease}
+.fill-crit{background:linear-gradient(90deg,var(--tc),#A83828)}
+.fill-high{background:linear-gradient(90deg,var(--olive),#C8A830)}
+.fill-med{background:linear-gradient(90deg,var(--teal),#7AAE8C)}
+.dim-tag{font-size:9px;font-family:var(--sans);font-weight:600;padding:2px 8px;border-radius:100px;white-space:nowrap;border:1px solid}
+.tag-crit{background:var(--tc-light);color:var(--tc);border-color:var(--tc-mid)}
+.tag-high{background:var(--olive-light);color:#8A6010;border-color:var(--olive-mid)}
+.tag-med{background:var(--teal-light);color:var(--teal);border-color:var(--teal-mid)}
+.derived-note{font-size:11px;color:var(--text2);font-family:var(--sans);padding:11px 14px;background:var(--lila-light);border:1px solid var(--lila-mid);border-radius:var(--radius-sm);margin-bottom:16px;line-height:1.65;border-left:3px solid var(--lila)}
+.context-summary-box{background:rgba(255,255,255,.6);border:1.5px solid var(--lila-mid);border-radius:var(--radius-sm);padding:16px;margin-bottom:16px;border-left:3px solid var(--lila)}
+.cs-profile{font-size:13px;color:var(--text);line-height:1.7;margin-bottom:8px;font-family:var(--sans)}
+.cs-label{font-size:10px;font-family:var(--sans);font-weight:700;color:var(--lila);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:4px}
+.cs-implication{font-size:12px;color:var(--text2);line-height:1.65;font-family:var(--sans);padding:10px 12px;background:var(--lila-light);border-radius:6px}
+.topsis-note{font-size:10px;color:var(--text3);font-family:var(--sans);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.topsis-badge{font-size:9px;font-family:var(--sans);font-weight:600;padding:2px 8px;border-radius:100px;background:var(--lila-light);color:var(--lila);border:1px solid var(--lila-mid);letter-spacing:.03em}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.col-card{background:rgba(255,255,255,.5);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;backdrop-filter:blur(12px);overflow:visible}
+.col-hd{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.col-sub{font-size:10px;color:var(--text3);font-family:var(--sans);margin-bottom:12px}
+.tool-row{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid rgba(220,200,185,.35)}
+.tool-row:last-child{border:none}
+.tool-row-v2{padding:8px 0;border-bottom:1px solid rgba(220,200,185,.35)}
+.tool-row-v2:last-child{border:none}
+.tr-top{display:flex;align-items:center;gap:9px}
+.tr-reason{font-size:10px;color:var(--text3);line-height:1.5;margin-top:3px;padding-left:25px;font-family:var(--sans)}
+.trank{font-size:11px;font-family:var(--sans);font-weight:600;color:var(--text3);width:16px;text-align:right;flex-shrink:0}
+.trank.gold{color:var(--olive)}
+.tname{flex:1;font-size:12px;font-weight:500;color:var(--text);font-family:var(--sans)}
+.tbar-w{width:68px;height:4px;background:rgba(200,185,175,.25);border-radius:2px;overflow:hidden}
+.tbar{height:100%;border-radius:2px;transition:width .7s ease}
+.tbar-g{background:linear-gradient(90deg,var(--lila),var(--tc))}
+.tbar-s{background:linear-gradient(90deg,var(--teal),var(--sage))}
+.tscore{font-size:10px;font-family:var(--sans);color:var(--text3);width:28px;text-align:right}
+.rtag{font-size:9px;padding:1px 7px;border-radius:100px;background:var(--lila-light);color:var(--lila);border:1px solid var(--lila-mid);margin-left:3px;font-family:var(--sans);font-weight:600}
+.obl-row{display:grid;grid-template-columns:100px 1fr 70px;gap:12px;align-items:start;padding:12px 0;border-bottom:1px solid rgba(220,200,185,.35)}
+.gap-q{padding:12px 0;border-bottom:1px solid rgba(220,200,185,.35)}
+.gap-q:last-child{border:none}
+.gap-q-text{font-size:12px;font-weight:500;color:var(--text);margin-bottom:8px;line-height:1.5}
+.gap-q-art{font-size:10px;font-family:var(--sans);font-weight:600;color:var(--teal);background:var(--teal-light);padding:2px 7px;border-radius:4px;border:1px solid var(--teal-mid);display:inline-block;margin-bottom:6px}
+.gap-opts{display:flex;gap:7px}
+.gap-opt{padding:6px 16px;border-radius:100px;border:1.5px solid var(--border2);background:rgba(255,255,255,.5);color:var(--text2);font-size:12px;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+.gap-opt:hover{background:rgba(255,255,255,.8)}
+.gap-opt.sel-yes{border-color:var(--sage);background:var(--sage-light);color:var(--sage);font-weight:500}
+.gap-opt.sel-partial{border-color:var(--olive);background:var(--olive-light);color:var(--olive);font-weight:500}
+.gap-opt.sel-no{border-color:var(--tc);background:var(--tc-light);color:var(--tc);font-weight:500}
+.obl-row:last-child{border:none}
+.obl-code{font-size:10px;font-family:var(--sans);font-weight:700;color:var(--teal);background:var(--teal-light);padding:3px 7px;border-radius:4px;border:1px solid var(--teal-mid)}
+.obl-title{font-size:12px;font-weight:600;margin-bottom:2px;font-family:var(--sans)}
+.obl-ctrl{font-size:11px;color:var(--text3);line-height:1.4;font-family:var(--sans)}
+.obl-st{font-size:10px;font-family:var(--sans);font-weight:600;padding:3px 9px;border-radius:100px;text-align:center;white-space:nowrap;border:1px solid}
+.st-gap{background:var(--tc-light);color:var(--tc);border-color:var(--tc-mid)}
+.st-ok{background:var(--sage-light);color:var(--sage);border-color:rgba(110,158,120,.4)}
+.vgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;margin-bottom:4px}
+.vc{background:rgba(255,255,255,.55);border:1px solid var(--border);border-radius:var(--radius-sm);padding:15px;backdrop-filter:blur(10px)}
+.vc-lbl{font-size:10px;font-family:var(--sans);font-weight:600;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.vc-val{font-size:17px;font-weight:500;font-family:var(--serif);line-height:1.2;color:var(--text)}
+.vc-sub{font-size:11px;color:var(--text3);margin-top:4px;font-family:var(--sans)}
+.action-item{padding:12px 15px;border-left:2.5px solid var(--olive-mid);background:rgba(255,255,255,.5);border-radius:0 8px 8px 0;margin-bottom:9px}
+.action-n{font-size:10px;font-family:var(--sans);font-weight:700;color:var(--olive);margin-bottom:4px;letter-spacing:.05em;text-transform:uppercase}
+.action-txt{font-size:12px;color:var(--text2);line-height:1.65;font-family:var(--sans)}
+.action-txt strong{color:var(--text);font-weight:600}
+.gap-detail{margin-top:6px;padding:8px 10px;background:rgba(244,160,122,.08);border-radius:6px;border:1px solid var(--tc-mid)}
+.gap-detail-title{font-size:11px;font-weight:600;color:var(--tc);font-family:var(--sans);margin-bottom:3px}
+.gap-detail-ctrl{font-size:11px;color:var(--text2);font-family:var(--sans);line-height:1.5}
+.gap-detail-tool{font-size:10px;color:var(--text3);font-family:var(--sans);margin-top:3px}
+
+/* ── PRINT / PDF ── */
+@media print {
+  @page { margin: 20mm 16mm; size: A4; }
+  body {
+    background: #fff !important;
+    color: #1A1917 !important;
+    font-size: 11px !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .hdr, .steps-wrap { display: none !important; }
+  .panel { display: none !important; }
+  .panel.active { display: block !important; }
+  .card {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    page-break-inside: avoid;
+  }
+  .btn-row { display: none !important; }
+  .vgrid { grid-template-columns: 1fr 1fr 1fr !important; gap: 8px !important; }
+  .vc {
+    background: #f8f6f3 !important;
+    border: 1px solid #ddd !important;
+    page-break-inside: avoid;
+  }
+  .action-item {
+    background: #fff !important;
+    border-left: 3px solid #C4614A !important;
+    page-break-inside: avoid;
+  }
+  .gap-detail { background: #fff8f5 !important; border: 1px solid #f5c4b8 !important; }
+  .main { padding: 0 !important; max-width: 100% !important; }
+  .card-hd { font-size: 18px !important; }
+  .shd::after { background: #ccc !important; }
+  /* Print header */
+  body.printing::before {
+    content: 'VENUS: AI Safety Intelligence Report';
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #1A1917;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #C4614A;
+    margin-bottom: 16px;
+  }
+  body.printing::after {
+    content: 'Generated by VENUS: AI Safety Intelligence Platform';
+    display: block;
+    font-size: 9px;
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 8px;
+    border-top: 1px solid #ddd;
+  }
+}
+
+/* ── INFO TOOLTIPS ── */
+.info-wrap{display:inline-flex;align-items:center;gap:6px}
+.info-btn{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--lila-mid);background:var(--lila-light);color:var(--lila);font-size:9px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);flex-shrink:0;position:relative;transition:all .15s;vertical-align:middle}
+.info-btn.active{background:var(--lila);color:#fff}
+.tooltip{position:fixed;background:rgba(30,26,24,.93);color:#fff;font-size:11px;font-family:var(--sans);font-weight:400;line-height:1.55;padding:10px 13px;border-radius:8px;width:230px;z-index:9999;text-align:left;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.2);display:none}
+.tooltip.visible{display:block}
+</style>
+</head>
+<body>
+<div class="landing" id="landing_page">
+  <div class="landing-inner">
+    <span class="landing-stamp">a research prototype</span>
+    <div class="landing-title"><span class="venus-mark">VENUS</span> &#9792;</div>
+    <svg class="landing-squiggle" viewBox="0 0 80 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 9 C12 3, 22 11, 32 6 C42 1, 52 10, 62 5 C68 2, 74 8, 78 6" stroke="#C4BADF" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </svg>
+    <p class="landing-text">Most organisations deploying AI systems know they need to think about safety and compliance. They just do not know where to start. Frameworks like the EU AI Act and the NIST AI RMF are comprehensive, but reading them does not tell you what to actually do with your specific system in your specific context. VENUS is our attempt to make that first step <em>less daunting.</em> You describe your system or your question, and the tool works out which safety dimensions matter for your situation, which tools are worth looking at, and where your compliance gaps are, producing a report you can actually hand to someone.</p>
+    <button class="landing-btn" onclick="startTool()">Get Started &#8594;</button>
+  </div>
+  <span class="landing-corner">v2.0 &nbsp; concept testing build</span>
+</div>
+<div id="tool_wrapper" style="display:none">
+<div class="hdr">
+  <div class="logo">
+    <div class="logo-mark">VENUS ♀</div>
+    <div class="logo-divider"></div>
+    <div class="logo-sub">AI Safety Intelligence<br>EU AI Act, NIST RMF, TOPSIS</div>
+  </div>
+  <div class="hdr-pills">
+    <span class="pill">EU AI Act</span>
+    <span class="pill">NIST RMF</span>
+    <span class="pill">TOPSIS</span>
+  </div>
+</div>
+<div class="steps-wrap">
+  <div class="step active" id="s1"><span class="snum">1</span>Profile</div>
+  <div class="step-sep"></div>
+  <div class="step" id="s2"><span class="snum">2</span>Risk & Dimension Analysis</div>
+  <div class="step-sep"></div>
+  <div class="step" id="s3"><span class="snum">3</span>Tool Recommendations</div>
+  <div class="step-sep"></div>
+  <div class="step" id="s4"><span class="snum">4</span>EU AI Act Compliance</div>
+  <div class="step-sep"></div>
+  <div class="step" id="s5"><span class="snum">5</span>Report</div>
+</div>
+
+<div class="main">
+
+<!-- STEP 1 -->
+<div class="panel active" id="p1">
+  <div class="card">
+    <div class="card-hd">How can we help?</div>
+    <div class="card-sub">Evaluate a specific AI system or get topic-based guidance on AI safety</div>
+    <div class="mode-row">
+      <div class="mode-opt on" id="mo_system" onclick="setMode('system')">
+        <div class="mode-opt-icon">🔬</div>
+        <div class="mode-opt-title">I want to evaluate an AI system</div>
+        <div class="mode-opt-desc">Enter system characteristics such as sector, data type, and autonomy level to receive risk classification, safety dimension profile, and tool recommendations.</div>
+      </div>
+      <div class="mode-opt" id="mo_topic" onclick="setMode('topic')">
+        <div class="mode-opt-icon">💬</div>
+        <div class="mode-opt-title">I want to consult on a topic</div>
+        <div class="mode-opt-desc">Get context-specific tool recommendations and EU AI Act guidance on topics such as fairness, transparency, security, or compliance.</div>
+      </div>
+    </div>
+
+    <!-- SYSTEM MODE -->
+    <div id="form_system">
+      <div class="fg">
+        <div class="field full"><label>System Name</label><input type="text" id="sys_name" placeholder="e.g. Credit Application Scoring System"/></div>
+        <div class="field"><label>Deployment Sector</label> <span class="info-btn" onclick="_showTip(this,'The sector determines which EU AI Act Annex III categories may apply and how critical each safety dimension is.')">i</span>
+          <select id="sector"><option value="">Select...</option><option value="healthcare">Healthcare</option><option value="finance">Finance / Banking</option><option value="legal">Legal</option><option value="hr">HR / Employment</option><option value="education">Education</option><option value="public">Public Administration</option><option value="general">General</option></select>
+        </div>
+        <div class="field"><label>System Autonomy Level</label> <span class="info-btn" onclick="_showTip(this,'Fully automated systems require mandatory human oversight under Art. 14. This directly affects your risk tier.')">i</span>
+          <select id="autonomy"><option value="">Select...</option><option value="full">Fully Automated</option><option value="loop">Human-in-the-Loop</option><option value="review">Human-on-the-Loop</option></select>
+        </div>
+        <div class="field"><label>Data Type Processed</label> <span class="info-btn" onclick="_showTip(this,'Health, biometric, and personal data trigger stricter obligations under EU AI Act Art. 10 and GDPR.')">i</span>
+          <select id="datatype"><option value="">Select...</option><option value="personal">Personal Data</option><option value="health">Health Data</option><option value="financial">Financial Data</option><option value="legal">Legal Content</option><option value="biometric">Biometric Data</option><option value="public">Publicly Available Data</option></select>
+        </div>
+        <div class="field"><label>Impact on Fundamental Rights</label> <span class="info-btn" onclick="_showTip(this,'If your system affects access to services, employment, education, or justice, it is likely High Risk under Annex III.')">i</span>
+          <div class="tg"><div class="tog" data-g="rights" data-v="yes">Yes</div><div class="tog" data-g="rights" data-v="no">No</div><div class="tog" data-g="rights" data-v="unsure">Unsure</div></div>
+        </div>
+        <div class="field"><label>Affects Vulnerable Groups?</label> <span class="info-btn" onclick="_showTip(this,'Children, elderly, people with disabilities, or marginalised groups increase the risk tier and fairness obligations.')">i</span>
+          <div class="tg"><div class="tog" data-g="vuln" data-v="yes">Yes</div><div class="tog" data-g="vuln" data-v="no">No</div></div>
+        </div>
+        <div class="field"><label>Real-time Biometric Recognition</label> <span class="info-btn" onclick="_showTip(this,'Real-time biometric identification in public spaces is Prohibited under EU AI Act Art. 5 with very limited exceptions.')">i</span>
+          <div class="tg"><div class="tog" data-g="bio" data-v="yes">Yes</div><div class="tog" data-g="bio" data-v="no">No</div></div>
+        </div>
+        <div class="field"><label>User-facing System?</label> <span class="info-btn" onclick="_showTip(this,'User-facing systems have additional transparency obligations under Art. 13: users must be informed they are interacting with AI.')">i</span>
+          <div class="tg"><div class="tog" data-g="user_facing" data-v="yes">Yes</div><div class="tog" data-g="user_facing" data-v="no">Internal / Back-end</div></div>
+        </div>
+        <div class="field full"><label>Brief Description (optional)</label>
+          <textarea id="sys_desc" placeholder="What does the system do? Who uses it? What decisions does it support?"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPIC MODE -->
+    <div id="form_topic" style="display:none">
+      <div class="shd" style="margin-top:0">Select your topic</div>
+      <div class="topic-grid">
+        <div class="topic-chip on" data-t="fairness"><div class="tc-icon">⚖️</div><div class="tc-name">Fairness & Bias</div><div class="tc-desc">Discrimination, fairness metrics, bias detection</div></div>
+        <div class="topic-chip" data-t="transparency"><div class="tc-icon">🔍</div><div class="tc-name">Transparency & XAI</div><div class="tc-desc">Model explainability, SHAP, LIME, interpretability</div></div>
+        <div class="topic-chip" data-t="security"><div class="tc-icon">🛡️</div><div class="tc-name">Security & Privacy</div><div class="tc-desc">Adversarial attacks, data security, privacy-preserving ML</div></div>
+        <div class="topic-chip" data-t="robustness"><div class="tc-icon">⚙️</div><div class="tc-name">Robustness & Testing</div><div class="tc-desc">Model validation, drift detection, reliability testing</div></div>
+        <div class="topic-chip" data-t="compliance"><div class="tc-icon">📋</div><div class="tc-name">Compliance & Audit</div><div class="tc-desc">EU AI Act, NIST RMF, documentation, audit trail</div></div>
+      </div>
+      <div class="fg">
+        <div class="field"><label>Relevant Sector</label>
+          <select id="t_sector"><option value="">Select...</option><option value="healthcare">Healthcare</option><option value="finance">Finance / Banking</option><option value="legal">Legal</option><option value="hr">HR / Employment</option><option value="education">Education</option><option value="public">Public Administration</option><option value="general">General</option></select>
+        </div>
+        <div class="field"><label>System Autonomy Level</label>
+          <select id="t_autonomy"><option value="">Select...</option><option value="full">Fully Automated Decision</option><option value="loop">Human-in-the-Loop</option><option value="review">Human-on-the-Loop</option><option value="unknown">Unsure / Not Applicable</option></select>
+        </div>
+        <div class="field"><label>Data Type Involved</label>
+          <select id="t_datatype"><option value="">Select...</option><option value="personal">Personal Data</option><option value="health">Health Data</option><option value="financial">Financial Data</option><option value="legal">Legal Content</option><option value="biometric">Biometric Data</option><option value="public">Publicly Available Data</option></select>
+        </div>
+        <div class="field"><label>Current Situation</label> <span class="info-btn" onclick="_showTip(this,'Regulatory pressure or post-incident contexts require urgent compliance action and affect which EU AI Act articles are prioritised.')">i</span>
+          <select id="t_stage"><option value="">Select...</option><option value="exploring">Exploring options</option><option value="evaluating">Evaluating an existing system</option><option value="regulatory">Facing regulatory pressure</option><option value="incident">Post-incident action required</option><option value="procurement">Procuring a new AI system</option></select>
+        </div>
+        <div class="field"><label>Impact on Fundamental Rights</label>
+          <div class="tg"><div class="tog" data-g="t_rights" data-v="yes">Yes</div><div class="tog" data-g="t_rights" data-v="no">No</div><div class="tog" data-g="t_rights" data-v="unsure">Unsure</div></div>
+        </div>
+        <div class="field"><label>Affects Vulnerable Groups?</label>
+          <div class="tg"><div class="tog" data-g="t_vuln" data-v="yes">Yes</div><div class="tog" data-g="t_vuln" data-v="no">No</div></div>
+        </div>
+        <div class="field"><label>User-facing System?</label>
+          <div class="tg"><div class="tog" data-g="t_facing" data-v="yes">Yes</div><div class="tog" data-g="t_facing" data-v="no">Internal / Back-end</div></div>
+        </div>
+        <div class="field"><label>Organisation Type</label> <span class="info-btn" onclick="_showTip(this,'Public institutions and large enterprises face stricter enforcement timelines under the EU AI Act.')">i</span>
+          <select id="t_org"><option value="">Select...</option><option value="startup">Startup / SME</option><option value="enterprise">Large Enterprise</option><option value="public_org">Public Institution</option><option value="research">Research / Academia</option></select>
+        </div>
+        <div class="field full"><label>Additional Context (optional)</label>
+          <textarea id="t_desc" placeholder="What question are you trying to answer? Briefly describe your system or the problem you are facing."></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-p" onclick="analyze()">Analyse →</button></div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="panel" id="p2">
+  <div class="card">
+    <div class="card-hd" id="s2_title">Risk Classification & Safety Dimension Profile</div>
+    <div class="card-sub">Automatically derived from your system profile · FR-2 · FR-4</div>
+    <div id="tier_wrap" style="margin-bottom:12px"></div>
+    <div id="tier_reason" class="info-box" style="margin-bottom:4px"></div>
+    <div id="context_summary"></div>
+    <div class="shd">Safety Dimension Profile <span class="info-btn" onclick="_showTip(this,'Dimensions are automatically derived from your profile. The higher the score, the more critical that dimension is for your context. TOPSIS weights are set accordingly.')">i</span></div>
+    <div class="derived-note" id="derived_note"></div>
+    <div class="dim-grid" id="dim_bars"></div>
+    <div class="shd">Relevant NIST AI RMF Actions <span class="info-btn" onclick="_showTip(this,'NIST AI RMF is the structured framework used to assess and manage AI risks. These actions are filtered by your risk tier and dominant safety dimension.')">i</span></div>
+    <div id="nist_list"></div>
+    <div class="btn-row"><button class="btn btn-g" onclick="goStep(1)">← Back</button><button class="btn btn-p" onclick="runTOPSIS()">View Tool Recommendations →</button></div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="panel" id="p3">
+  <div class="card">
+    <div class="card-hd">Tool Recommendations</div>
+    <div class="card-sub">Context-derived weights applied · Gen AI assistants and Safety Tools ranked independently</div>
+    <div class="topsis-note"><span class="topsis-badge">Powered by TOPSIS</span> Rankings computed using the Technique for Order of Preference by Similarity to Ideal Solution, with weights derived from your safety dimension profile</div>
+    <div class="derived-note" id="wt_note"></div>
+    <div class="two-col">
+      <div class="col-card">
+        <div class="col-hd">AI Assistants <span class="info-btn" onclick="_showTip(this,'Ranked by how well each AI assistant supports your specific safety workflow. Scores are based on a 9-question checklist derived from publicly available documentation.')">i</span></div>
+        <div class="col-sub">Ranked by context: transparency, safety, privacy, robustness, compliance</div>
+        <div id="genai_list"></div>
+      </div>
+      <div class="col-card">
+        <div class="col-hd">AI Safety Tools <span class="info-btn" onclick="_showTip(this,'Specialised technical tools ranked by their capability across your critical dimensions. Each score is grounded in tool documentation and academic sources.')">i</span></div>
+        <div class="col-sub">Ranked by context: fairness, transparency, security, robustness, compliance</div>
+        <div id="safety_list"></div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-g" onclick="goStep(2)">← Back</button><button class="btn btn-p" onclick="goStep(4)">EU AI Act Compliance →</button></div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="panel" id="p4">
+  <div class="card" id="gap_questions_card">
+    <div class="card-hd">Compliance Self-Assessment</div>
+    <div class="card-sub">FR-5 · Answer each question honestly. Your answers determine which obligations are gaps. <span class="info-btn" onclick="_showTip(this,'These questions map directly to EU AI Act Articles 9-15 for high-risk systems. A gap means the required control is not yet in place. Gaps appear in your VENUS report with specific remediation guidance.')">i</span></div>
+    <div id="gap_questions"></div>
+    <div class="btn-row">
+      <button class="btn btn-g" onclick="goStep(3)">← Back</button>
+      <button class="btn btn-p" onclick="submitGapAnswers()">Generate Compliance Map →</button>
+    </div>
+  </div>
+  <div class="card" id="gap_map_card" style="display:none">
+    <div class="card-hd">EU AI Act Compliance Map</div>
+    <div class="card-sub">Based on your self-assessment answers · FR-5</div>
+    <div id="compliance_map"></div>
+    <div class="btn-row">
+      <button class="btn btn-g" onclick="showGapQuestions()">← Revise Answers</button>
+      <button class="btn btn-p" onclick="buildVenus()">Generate Report →</button>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="panel" id="p5">
+  <div class="card">
+    <div class="card-hd">VENUS: Integrated Analysis Report</div>
+    <div class="card-sub">All module outputs consolidated · Ready to add to your audit file · FR-9</div>
+    <div class="vgrid" id="venus_cards"></div>
+    <div class="shd">Priority Actions</div>
+    <div id="venus_actions"></div>
+    <div class="btn-row"><button class="btn btn-g" onclick="goStep(4)">← Back</button><button class="btn btn-p" onclick="exportPDF()">Export as PDF</button><button class="btn btn-g" onclick="resetAll()">New Analysis</button></div>
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+const ST={mode:'system',sector:'',datatype:'',autonomy:'',rights:'',vuln:'',bio:'',user_facing:'',sys_name:'',topic:'fairness',t_sector:'',t_autonomy:'',t_datatype:'',t_stage:'',t_rights:'',t_vuln:'',t_facing:'',t_org:'',tier:'',dims:{},weights:[]};
+let gapData=[];
+
+function setMode(m){ST.mode=m;document.getElementById('mo_system').classList.toggle('on',m==='system');document.getElementById('mo_topic').classList.toggle('on',m==='topic');document.getElementById('form_system').style.display=m==='system'?'':'none';document.getElementById('form_topic').style.display=m==='topic'?'':'none';}
+document.querySelectorAll('.tog').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll(`[data-g="${t.dataset.g}"]`).forEach(x=>x.classList.remove('on'));t.classList.add('on');ST[t.dataset.g]=t.dataset.v;});});
+document.querySelectorAll('.topic-chip').forEach(c=>{c.addEventListener('click',()=>{document.querySelectorAll('.topic-chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');ST.topic=c.dataset.t;});});
+
+function goStep(n){for(let i=1;i<=5;i++){document.getElementById('p'+i).classList.toggle('active',i===n);const s=document.getElementById('s'+i);s.classList.remove('active','done');if(i===n)s.classList.add('active');else if(i<n){s.classList.add('done');s.querySelector('.snum').textContent='✓';}else s.querySelector('.snum').textContent=i;}if(n===4)buildCompliance();}
+
+function resetAll(){Object.keys(ST).forEach(k=>{if(typeof ST[k]==='string')ST[k]='';else if(Array.isArray(ST[k]))ST[k]=[];else ST[k]={};});ST.mode='system';ST.topic='fairness';gapData=[];document.querySelectorAll('.tog,.topic-chip').forEach(t=>t.classList.remove('on'));document.querySelector('[data-t="fairness"]').classList.add('on');['sys_name','sys_desc','t_desc'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});['sector','autonomy','datatype','t_sector','t_autonomy','t_datatype','t_stage','t_org'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});setMode('system');for(let i=1;i<=5;i++){const s=document.getElementById('s'+i);s.classList.remove('active','done');s.querySelector('.snum').textContent=i;}gapAnswers={};const gqc=document.getElementById("gap_questions_card");const gmc=document.getElementById("gap_map_card");if(gqc)gqc.style.display="";if(gmc)gmc.style.display="none";goStep(1);}
+
+/* DIMENSIONS */
+function deriveDimensions(){
+  const d={transparency:0,fairness:0,security:0,robustness:0,compliance:0};
+  const sMap={healthcare:{transparency:3,fairness:2,security:3,robustness:3,compliance:3},finance:{transparency:2,fairness:3,security:3,robustness:3,compliance:3},legal:{transparency:4,fairness:1,security:2,robustness:2,compliance:4},hr:{transparency:3,fairness:4,security:1,robustness:2,compliance:3},public:{transparency:3,fairness:3,security:3,robustness:2,compliance:4},education:{transparency:2,fairness:3,security:1,robustness:2,compliance:2},general:{transparency:1,fairness:1,security:1,robustness:1,compliance:1}};
+  const dtMap={health:{transparency:2,fairness:2,security:3,robustness:2,compliance:3},financial:{transparency:1,fairness:3,security:3,robustness:3,compliance:2},personal:{transparency:2,fairness:2,security:3,robustness:1,compliance:2},legal:{transparency:3,fairness:1,security:2,robustness:1,compliance:3},biometric:{transparency:2,fairness:3,security:4,robustness:2,compliance:4},public:{transparency:1,fairness:1,security:1,robustness:1,compliance:1}};
+  const aMap={full:{transparency:3,fairness:3,security:2,robustness:3,compliance:3},loop:{transparency:1,fairness:2,security:1,robustness:2,compliance:2},review:{transparency:1,fairness:1,security:0,robustness:1,compliance:1}};
+  const add=(map,key)=>{const e=map[key];if(e)Object.keys(d).forEach(k=>d[k]+=(e[k]||0));};
+  if(ST.mode==='topic'){
+    const tBase={fairness:{transparency:1,fairness:9,security:1,robustness:1,compliance:2},transparency:{transparency:9,fairness:1,security:1,robustness:1,compliance:1},security:{transparency:1,fairness:1,security:9,robustness:2,compliance:2},robustness:{transparency:1,fairness:1,security:2,robustness:9,compliance:1},compliance:{transparency:1,fairness:1,security:1,robustness:1,compliance:9}};
+    const base=tBase[ST.topic]||tBase.compliance;
+    Object.keys(d).forEach(k=>d[k]+=base[k]);
+    add(sMap,ST.t_sector);add(dtMap,ST.t_datatype);add(aMap,ST.t_autonomy);
+    if(ST.t_rights==='yes'){d.fairness+=3;d.transparency+=2;d.compliance+=2;}
+    if(ST.t_vuln==='yes'){d.fairness+=3;d.transparency+=2;}
+    if(ST.t_facing==='yes'){d.transparency+=2;d.fairness+=1;}
+    if(ST.t_stage==='regulatory'||ST.t_stage==='incident')d.compliance+=3;
+    if(ST.t_stage==='procurement')d.compliance+=2;
+  } else {
+    add(sMap,ST.sector);add(dtMap,ST.datatype);add(aMap,ST.autonomy);
+    if(ST.rights==='yes'){d.fairness+=3;d.transparency+=2;d.compliance+=2;}
+    if(ST.rights==='unsure'){d.fairness+=1;d.compliance+=1;}
+    if(ST.vuln==='yes'){d.fairness+=3;d.transparency+=2;}
+    if(ST.bio==='yes'){d.security+=4;d.compliance+=3;}
+    if(ST.user_facing==='yes'){d.transparency+=2;d.fairness+=1;}
+  }
+  return d;
+}
+
+const NIST_DB={'GOVERN 1.1':'Legal and regulatory requirements involving AI are understood, managed, and documented.','GOVERN 1.2':'Trustworthy AI characteristics are maintained throughout the AI system lifecycle.','GOVERN 1.4':'Organisational teams are committed to AI risk management and the process is institutionalised.','GOVERN 1.6':'Mechanisms are in place to inventory AI systems according to organisational risk priorities.','MAP 1.1':'Context is established for the AI risk assessment, covering intended use, users, and deployment conditions.','MAP 1.5':'Likelihood and magnitude of each identified impact are assessed and documented.','MAP 1.6':'AI risks or potential impacts are mapped to and informed by data collected throughout the AI lifecycle.','MEASURE 2.1':'Test sets reflecting the intended deployment context are identified and AI system performance is evaluated.','MEASURE 2.2':'Evaluations of AI system trustworthy characteristics are performed and documented.','MEASURE 2.5':'AI system fairness metrics are evaluated and documented.','MEASURE 2.7':'AI system security and resilience are evaluated and documented.','MEASURE 2.10':'Privacy risk of the AI system is evaluated and documented.','MANAGE 1.3':'Responses to the AI risks deemed high priority are developed, planned, and documented.','MANAGE 2.2':'Mechanisms are in place to evaluate effectiveness of AI risk management and response.'};
+const DIM_NIST={transparency:['GOVERN 1.2','MEASURE 2.1','MAP 1.1'],fairness:['GOVERN 1.2','MAP 1.5','MEASURE 2.5'],security:['GOVERN 1.6','MAP 1.6','MEASURE 2.7'],robustness:['MEASURE 2.1','MEASURE 2.2','MANAGE 1.3'],compliance:['GOVERN 1.1','GOVERN 1.4','MANAGE 2.2']};
+const TIER_NIST={high:['GOVERN 1.1','GOVERN 1.2','MAP 1.1','MAP 1.5','MEASURE 2.1','MANAGE 1.3'],limited:['GOVERN 1.1','GOVERN 1.2','MAP 1.1'],minimal:['GOVERN 1.1','MAP 1.1'],prohibited:[]};
+const DIM_LABEL={transparency:'Transparency',fairness:'Safety & Fairness',security:'Security & Privacy',robustness:'Robustness',compliance:'Compliance & Oversight'};
+
+function analyze(){
+  if(ST.mode==='system'){ST.sector=document.getElementById('sector').value;ST.datatype=document.getElementById('datatype').value;ST.autonomy=document.getElementById('autonomy').value;ST.sys_name=document.getElementById('sys_name').value||'Unnamed System';}
+  else{ST.t_sector=document.getElementById('t_sector').value;ST.t_autonomy=document.getElementById('t_autonomy').value;ST.t_datatype=document.getElementById('t_datatype').value;ST.t_stage=document.getElementById('t_stage').value;ST.t_org=document.getElementById('t_org').value;const desc=document.getElementById('t_desc').value;ST.sys_name=desc?desc.substring(0,40)+'…':`${DIM_LABEL[ST.topic]} Consultation`;}
+  let tier='minimal',reasons=[],score=0;
+  if(ST.mode==='topic'){
+    tier=ST.t_stage==='regulatory'||ST.t_stage==='incident'?'high':'limited';
+    const tR={fairness:'Fairness & bias topic: EU AI Act Art. 10 (data governance) and Art. 13 (transparency) are relevant.',transparency:'Explainability topic: Art. 13 (transparency obligations) and Art. 14 (human oversight) are relevant.',security:'Security & privacy topic: Art. 15 (robustness and cybersecurity requirements) is relevant.',robustness:'Robustness & testing topic: Art. 9 (risk management) and Art. 15 (accuracy requirements) are relevant.',compliance:'Compliance topic: EU AI Act Art. 9–15 obligations for high-risk systems apply directly.'};
+    reasons.push(tR[ST.topic]);
+    if(ST.t_rights==='yes')reasons.push('Impact on fundamental rights identified: high-risk context.');
+    if(ST.t_vuln==='yes')reasons.push('Vulnerable groups involved: heightened attention required.');
+    if(ST.t_stage==='regulatory')reasons.push('Regulatory pressure present: compliance must be prioritised.');
+    if(ST.t_stage==='incident')reasons.push('Post-incident context: urgent control assessment required.');
+    document.getElementById('s2_title').textContent='Topic Analysis & Safety Dimension Profile';
+    document.getElementById('tier_wrap').innerHTML=`<div style="margin-bottom:10px;font-size:12px;color:var(--text2);font-family:var(--sans);padding:9px 13px;background:rgba(255,255,255,.4);border-radius:6px;border:1px solid var(--border)">EU AI Act risk tier: not determined in topic-based consultations. Return to Step 1 to evaluate a specific system.</div>`;
+  } else {
+    if(ST.bio==='yes'){tier='prohibited';reasons.push('Real-time biometric identification detected. EU AI Act Art. 5 classifies this as Prohibited. This system cannot be deployed.');}
+    else{const s={healthcare:3,finance:2,hr:2,public:2,legal:2,education:1};const d={health:3,biometric:3,personal:2,financial:2,legal:1};const a={full:2,loop:1,review:0};score+=(s[ST.sector]||0)+(d[ST.datatype]||0)+(a[ST.autonomy]||0);if(ST.rights==='yes')score+=3;if(ST.vuln==='yes')score+=2;if(score>=8)tier='high';else if(score>=3)tier='limited';const rM={healthcare:'Healthcare sector: covered under Annex III Item 2 (medical devices).',finance:'Finance: covered under Annex III Item 5 (creditworthiness assessment).',hr:'Employment decisions: covered under Annex III Item 4.',public:'Public administration: covered under Annex III Item 6.',legal:'Administration of justice: covered under Annex III Item 8.'};if(rM[ST.sector])reasons.push(rM[ST.sector]);if(ST.rights==='yes')reasons.push('Direct impact on fundamental rights, which is a primary high-risk determinant.');if(ST.vuln==='yes')reasons.push('Impact on vulnerable groups.');if(ST.autonomy==='full')reasons.push('Fully automated decision-making: Art. 14 human oversight is mandatory.');if(reasons.length===0)reasons.push('No critical risk factors detected. Minimal Risk tier applies.');}
+    document.getElementById('s2_title').textContent='Risk Classification & Safety Dimension Profile';
+    const cls={prohibited:'t-prohibited',high:'t-high',limited:'t-limited',minimal:'t-minimal'};const lbl={prohibited:'⛔ Prohibited Risk',high:'🔴 High Risk',limited:'🟡 Limited Risk',minimal:'🟢 Minimal Risk'};
+    document.getElementById('tier_wrap').innerHTML=`<div style="margin-bottom:12px"><span class="tier-badge ${cls[tier]}"><span class="tdot"></span>${lbl[tier]}</span><span style="font-size:11px;color:var(--text3);font-family:var(--sans);margin-left:12px">${ST.sys_name} · score ${score}</span></div>`;
+  }
+  ST.tier=tier;
+  document.getElementById('tier_reason').innerHTML='<strong>Classification rationale:</strong><br>'+reasons.map(r=>'• '+r).join('<br>');
+  const dims=deriveDimensions();ST.dims=dims;
+  const maxD=Math.max(...Object.values(dims),1);
+  const sorted=Object.entries(dims).sort((a,b)=>b[1]-a[1]);
+  const top2=sorted.slice(0,2).map(([k])=>DIM_LABEL[k]).join(' and ');
+  document.getElementById('derived_note').textContent=`${ST.mode==='topic'?'Selected topic and context':'System profile'} analysed. Most critical dimensions: ${top2}. TOPSIS weights will be derived automatically from this profile.`;
+  const dimTag=(v)=>{const r=v/maxD;if(r>=.7)return{cls:'tag-crit',lbl:'Critical',fill:'fill-crit'};if(r>=.4)return{cls:'tag-high',lbl:'High',fill:'fill-high'};return{cls:'tag-med',lbl:'Medium',fill:'fill-med'};};
+  document.getElementById('dim_bars').innerHTML=sorted.map(([k,v])=>{const t=dimTag(v);return `<div class="dim-row"><span class="dim-name">${DIM_LABEL[k]}</span><div class="dim-track"><div class="dim-fill ${t.fill}" style="width:${Math.round(v/maxD*100)}%"></div></div><span class="dim-tag ${t.cls}">${t.lbl}</span></div>`;}).join('');
+  const topKey=sorted[0][0];
+  const rel=[...new Set([...(DIM_NIST[topKey]||[]),...(TIER_NIST[tier]||[])])].slice(0,6);
+  document.getElementById('nist_list').innerHTML=rel.map(id=>`<div class="nist-item"><div class="nist-id">${id}</div><div class="nist-txt">${NIST_DB[id]||''}</div></div>`).join('');
+  document.getElementById('context_summary').innerHTML=buildContextSummary(dims);
+  goStep(2);
+}
+
+/* TOPSIS */
+const DIM_ORDER=['transparency','fairness','security','robustness','compliance'];
+const BASE_W=[0.1964,0.2232,0.2143,0.1964,0.1696];
+const GENAI=[
+  // [Transparency, Safety/Fairness, Security/Privacy, Robustness, Compliance]
+  // Scores derived from 9-question checklist (documentation-based, 1-9 scale)
+  {name:'ChatGPT',    s:[7,7,5,5,7]},  // Strong safety docs; mid privacy (opt-out default)
+  {name:'Gemini',     s:[7,6,3,5,6]},  // Lowest privacy: trains by default, Google ecosystem
+  {name:'Claude',     s:[9,8,7,5,7]},  // Best transparency+safety; opt-in training (post Sept 2025)
+  {name:'Copilot',    s:[7,8,9,5,9]},  // Best security/privacy (M365 no-training) + compliance
+  {name:'Perplexity', s:[9,3,6,9,1]},  // Best robustness (citations); critical security vulns; no audit docs
+];
+const SAFETY=[
+  // [Transparency, Fairness, Security/Privacy, Robustness, Compliance]
+  {name:'Fairlearn',   s:[5,9,1,6,5], cat:['fairness']},        // disparate impact, equalized odds. Microsoft
+  {name:'AIF360',      s:[5,9,1,6,6], cat:['fairness']},        // 70+ fairness metrics, IBM EU AI Act paper
+  {name:'SHAP',        s:[9,1,1,5,5], cat:['transparency']},    // model-agnostic global+local, 22k stars
+  {name:'LIME',        s:[9,1,1,2,1], cat:['transparency']},    // local XAI only, limited maintenance
+  {name:'InterpretML', s:[9,5,1,5,5], cat:['transparency','fairness']}, // EBMs + SHAP, Microsoft
+  {name:'ART',         s:[5,1,5,8,5], cat:['robustness','security']},   // 40+ attack types, IBM
+  {name:'Deepchecks',  s:[5,9,3,9,7], cat:['robustness','fairness']},   // full lifecycle, structured reports
+  {name:'Evidently',   s:[5,5,1,9,7], cat:['robustness']},      // production monitoring specialist
+  {name:'MLflow',      s:[5,1,1,8,8], cat:['compliance']},      // lifecycle audit trail, Linux Foundation
+  {name:'Diffprivlib', s:[1,1,7,2,5], cat:['security','privacy']}, // differential privacy specialist, IBM
+];
+function dimsToWeights(dims){const mx=Math.max(...Object.values(dims),1);const temp=4.0;const exp=DIM_ORDER.map(k=>Math.exp((dims[k]/mx)*temp));const s=exp.reduce((a,b)=>a+b,0);return exp.map(v=>v/s);}
+function topsis(tools,w){const mat=tools.map(t=>t.s),m=w.length,n=mat.length;const nm=Array.from({length:m},(_,j)=>Math.sqrt(mat.reduce((s,r)=>s+r[j]**2,0)));const wn=mat.map(r=>r.map((v,j)=>nm[j]?v/nm[j]*w[j]:0));const best=Array.from({length:m},(_,j)=>Math.max(...wn.map(r=>r[j])));const worst=Array.from({length:m},(_,j)=>Math.min(...wn.map(r=>r[j])));const db=wn.map(r=>Math.sqrt(r.reduce((s,v,j)=>(s+(v-best[j])**2),0)));const dw=wn.map(r=>Math.sqrt(r.reduce((s,v,j)=>(s+(v-worst[j])**2),0)));return tools.map((t,i)=>({...t,score:dw[i]/(db[i]+dw[i])})).sort((a,b)=>b.score-a.score);}
+
+function runTOPSIS(){
+  const w=dimsToWeights(ST.dims);ST.weights=w;
+  const di=w.indexOf(Math.max(...w));const dk=DIM_ORDER[di];
+  document.getElementById('wt_note').textContent=`Dominant criterion: ${DIM_LABEL[dk]} (${(w[di]*100).toFixed(1)}% weight). Rankings reflect your context. A different profile will produce different results.`;
+  const gr=topsis(GENAI,w),sf=topsis(SAFETY,w);
+  const gm=gr[0].score,sm=sf[0].score;
+  document.getElementById('genai_list').innerHTML=gr.map((t,i)=>{
+    const reason=getGenAIReason(t.name,dk);
+    return `<div class="tool-row-v2">
+      <div class="tr-top"><span class="trank ${i===0?'gold':''}">${i+1}.</span><span class="tname">${t.name}</span><div class="tbar-w"><div class="tbar tbar-g" style="width:${Math.round(t.score/gm*100)}%"></div></div><span class="tscore">${(t.score*100).toFixed(1)}</span></div>
+      <div class="tr-reason">${reason}</div>
+    </div>`;}).join('');
+  document.getElementById('safety_list').innerHTML=sf.map((t,i)=>{
+    const rec=t.cat&&t.cat.includes(dk);
+    const reason=getSafetyReason(t.name,dk);
+    return `<div class="tool-row-v2">
+      <div class="tr-top"><span class="trank ${i===0?'gold':''}">${i+1}.</span><span class="tname">${t.name}${rec?'<span class="rtag">Best fit</span>':''}</span><div class="tbar-w"><div class="tbar tbar-s" style="width:${Math.round(t.score/sm*100)}%"></div></div><span class="tscore">${(t.score*100).toFixed(1)}</span></div>
+      <div class="tr-reason">${reason}</div>
+    </div>`;}).join('');
+  goStep(3);
+}
+
+/* MODULE 3 */
+const OBLS=[
+  {code:'ART9-OBL1',  title:'Establish a risk management system',          ctrl:'Document and maintain a risk management plan covering the full AI lifecycle',                     tier:'high', tool:'MLflow'},
+  {code:'ART9-OBL2',  title:'Identify and analyse known risks',             ctrl:'Create a risk register with entries for each foreseeable risk and misuse scenario',              tier:'high', tool:'Deepchecks'},
+  {code:'ART9-OBL3',  title:'Estimate and evaluate risks',                  ctrl:'Apply a Severity × Likelihood × Exposure matrix to quantify identified risks',                   tier:'high', tool:'Deepchecks'},
+  {code:'ART10-OBL1', title:'Ensure training data quality',                 ctrl:'Set up automated data quality checks covering completeness, representativeness, and accuracy',   tier:'high', tool:'Great Expectations'},
+  {code:'ART10-OBL2', title:'Examine training data for bias',               ctrl:'Apply bias detection and mitigation techniques before training',                                  tier:'high', tool:'Fairlearn / AIF360'},
+  {code:'ART11-OBL1', title:'Prepare technical documentation',              ctrl:'Maintain versioned technical documentation before market placement',                             tier:'high', tool:'MLflow'},
+  {code:'ART12-OBL1', title:'Enable automatic event logging',               ctrl:'Set up a structured event logging system with tamper-evidence',                                  tier:'high', tool:'Evidently'},
+  {code:'ART13-OBL1', title:'Ensure output interpretability',               ctrl:'Integrate explainability methods (e.g. SHAP, LIME) for output interpretation',                  tier:'high', tool:'SHAP / LIME'},
+  {code:'ART14-OBL1', title:'Enable human oversight during operation',      ctrl:'Implement a real-time monitoring dashboard with override and halt capability',                   tier:'high', tool:'Evidently'},
+  {code:'ART15-OBL1', title:'Achieve and maintain appropriate accuracy',    ctrl:'Conduct systematic model performance evaluation and adversarial robustness testing',            tier:'high', tool:'ART / Deepchecks'},
+  {code:'ART50-OBL1', title:'Disclose AI-generated content to users',       ctrl:'Add a clear transparency notice informing users that content is AI-generated',                  tier:'limited', tool:'(Organisational measure)'},
+  {code:'ART50-OBL2', title:'Label synthetic media content',                ctrl:'Implement synthetic content detection and machine-readable labelling',                          tier:'limited', tool:'(Organisational measure)'},
+];
+
+
+
+function buildVenus(){
+  const tl={high:'High Risk',limited:'Limited Risk',minimal:'Minimal Risk',prohibited:'Prohibited'};
+  const tc={high:'var(--tc)',limited:'var(--olive)',minimal:'var(--sage)',prohibited:'#C03020'};
+  const gTop=document.querySelector('#genai_list .tname');
+  const sTop=document.querySelector('#safety_list .tname');
+  const total=document.querySelectorAll('.obl-row').length;
+  const di=ST.weights.indexOf(Math.max(...ST.weights));
+  const dk=DIM_ORDER[di];
+  document.getElementById('venus_cards').innerHTML=`
+    <div class="vc"><div class="vc-lbl">Analysis Type</div><div class="vc-val">${ST.mode==='topic'?'Topic Consultation':'System Evaluation'}</div><div class="vc-sub">${ST.sys_name}</div></div>
+    <div class="vc"><div class="vc-lbl">${ST.mode==='topic'?'Topic':'Risk Tier'}</div><div class="vc-val" style="color:${tc[ST.tier]||'var(--text)'}">${ST.mode==='topic'?DIM_LABEL[ST.topic]:tl[ST.tier]||'n/a'}</div><div class="vc-sub">${ST.mode==='topic'?(ST.t_sector||'General'):(ST.sector||'n/a')}</div></div>
+    <div class="vc"><div class="vc-lbl">Critical Dimension</div><div class="vc-val">${DIM_LABEL[dk]}</div><div class="vc-sub">Derived from profile</div></div>
+    <div class="vc"><div class="vc-lbl">Recommended AI Assistant</div><div class="vc-val">${gTop?gTop.textContent.trim():'n/a'}</div><div class="vc-sub">TOPSIS #1</div></div>
+    <div class="vc"><div class="vc-lbl">Recommended Safety Tool</div><div class="vc-val">${sTop?sTop.textContent.replace(/Best fit/g,'').trim():'n/a'}</div><div class="vc-sub">Best fit for ${DIM_LABEL[dk]}</div></div>
+    <div class="vc"><div class="vc-lbl">Compliance Gaps</div><div class="vc-val" style="color:${gapData.length>0?'var(--tc)':'var(--sage)'}">${total>0?gapData.length+'/'+total:'Out of scope'}</div><div class="vc-sub">EU AI Act obligations</div></div>`;
+
+  const acts=[];
+
+  // Specific gap actions with what-to-do
+  if(gapData.length>0){
+    acts.push({
+      title:`${gapData.length} compliance gap${gapData.length>1?'s':''} identified. Please assign owners and create a remediation plan`,
+      detail: gapData.map(g=>`<div class="gap-detail"><div class="gap-detail-title">${g.code}: ${g.title}</div><div class="gap-detail-ctrl">Required control: ${g.ctrl}</div><div class="gap-detail-tool">Suggested tool: ${g.tool}</div></div>`).join('')
+    });
+  }
+
+  if(ST.tier==='high'||ST.t_stage==='regulatory'||ST.t_stage==='incident'){
+    acts.push({title:'Art. 9: Document and implement a risk management system covering the full AI lifecycle.',detail:''});
+    acts.push({title:'Art. 13 + 14: Prepare an explainability report and define a human oversight protocol.',detail:''});
+  }
+  if(ST.tier==='limited'||ST.mode==='topic')acts.push({title:'Art. 50: Add a clear disclosure to users that content is AI-generated.',detail:''});
+  if(dk==='fairness')acts.push({title:'Run a systematic bias assessment using <strong>Fairlearn</strong> or <strong>AIF360</strong> before deployment.',detail:''});
+  if(dk==='transparency')acts.push({title:'Integrate <strong>SHAP</strong> or <strong>LIME</strong> to explain model outputs and document the results.',detail:''});
+  if(dk==='security')acts.push({title:'Conduct adversarial robustness testing with <strong>ART</strong> and apply differential privacy via <strong>Diffprivlib</strong>.',detail:''});
+  if(dk==='robustness')acts.push({title:'Set up continuous model monitoring with <strong>Deepchecks</strong> or <strong>Evidently</strong>.',detail:''});
+  if(dk==='compliance')acts.push({title:'Implement AI lifecycle management and audit trail with <strong>MLflow</strong>.',detail:''});
+  acts.push({title:'Export this VENUS report as PDF and add it to your audit file.',detail:''});
+
+  document.getElementById('venus_actions').innerHTML=acts.map((a,i)=>`<div class="action-item"><div class="action-n">Action ${i+1}</div><div class="action-txt">${a.title}${a.detail}</div></div>`).join('');
+  goStep(5);
+}
+
+/* ── TOOL REASON DATA ── */
+const GENAI_REASONS={
+  'ChatGPT':{
+    transparency:'Source citations absent by default; reasoning visible but not formally grounded.',
+    fairness:'Safety documentation strong: 400+ red-teamers, GPT-5 system card published.',
+    security:'Privacy concern: trains on conversations by default; opt-out required.',
+    robustness:'Most widely benchmarked model; third-party hallucination studies available.',
+    compliance:'System cards and SOC2 published; opt-out training available via privacy portal.'
+  },
+  'Claude':{
+    transparency:'Highest score (9/9): Constitutional AI design produces detailed, faithful reasoning.',
+    fairness:'Highest score (9/9): 99.78% harmless response rate; lower jailbreak success rate than GPT-4o.',
+    security:'Opt-in training policy (post Sept 2025) is better than most competitors; strong GDPR compliance.',
+    robustness:'Anthropic Transparency Hub publishes model-level safety evaluations per release.',
+    compliance:'153-page system cards, joint safety evaluation with OpenAI (Aug 2025), SOC2 available.'
+  },
+  'Gemini':{
+    transparency:'AI disclosure clear; source grounding via Google Search improves factual reliability.',
+    fairness:'DeepMind safety practices apply; less publicly documented than OpenAI or Anthropic.',
+    security:'Lowest privacy score: trains by default, 18-month data retention, merged with Google account.',
+    robustness:'Third-party studies show approx. 38% hallucination rate; Google publishes some benchmarks.',
+    compliance:'Some responsible AI publications; no comprehensive system card equivalent to competitors.'
+  },
+  'Copilot':{
+    transparency:'Clear AI disclosure in Microsoft 365 context; enterprise audit logging available.',
+    fairness:'Microsoft Responsible AI framework with documented content filters and red-teaming.',
+    security:'Highest score (9/9): user data is explicitly not used to train LLMs per Microsoft Learn documentation.',
+    robustness:'Enterprise-grade reliability; relies on OpenAI models with Microsoft infrastructure.',
+    compliance:'Highest score (9/9): Responsible AI Standard, Data Processing Agreement, SOC2, human review workflows.'
+  },
+  'Perplexity':{
+    transparency:'Highest score (9/9): every response includes verifiable source citations.',
+    fairness:'Limited public safety documentation; no formal red-teaming reports published.',
+    security:'Critical vulnerabilities found (Appknox, Apr 2025): hardcoded API keys, no SSL pinning.',
+    robustness:'Highest score (9/9): source citations enable direct factual verification by users.',
+    compliance:'No published safety reports, no SOC2, no system cards. Lowest compliance score.'
+  }
+};
+
+const SAFETY_REASONS={
+  'Fairlearn':{
+    fairness:'Highest score (9/9): disparate impact, equalized odds, demographic parity. Pre, in, and post-processing algorithms. Microsoft-backed.',
+    transparency:'Fairness dashboards available but not an XAI explanation tool.',
+    security:'No adversarial or privacy features.',
+    robustness:'Active GitHub with 2.2k stars; regular releases including scikit-learn 1.6 compatibility (2025).',
+    compliance:'Fairness reports available; limited formal EU AI Act or NIST RMF documentation.'
+  },
+  'AIF360':{
+    fairness:'Highest score (9/9): 70+ fairness metrics, 15+ mitigation algorithms. IBM Research.',
+    transparency:'Fairness dashboards available but not a general XAI tool.',
+    security:'No adversarial or privacy features.',
+    robustness:'IBM-backed, actively maintained. Slightly less recent activity than Fairlearn.',
+    compliance:'IBM Research paper explicitly maps AIF360 to EU AI Act requirements (ArXiv 2410.05306).'
+  },
+  'SHAP':{
+    fairness:'Not a fairness tool. Explains model behaviour but does not detect or mitigate bias.',
+    transparency:'Highest score (9/9): model-agnostic global and local explanations. 22k GitHub stars.',
+    security:'No adversarial or privacy features.',
+    robustness:'Most widely used XAI library; well-maintained with strong community support.',
+    compliance:'Referenced in EU AI Act compliance literature as standard for Art. 13 transparency.'
+  },
+  'LIME':{
+    fairness:'Not a fairness tool.',
+    transparency:'Highest score (9/9): model-agnostic local explanations. Original paper: Ribeiro et al. (2016).',
+    security:'No adversarial or privacy features.',
+    robustness:'Less actively maintained than SHAP. Local explanations only; no global analysis.',
+    compliance:'Minimal documentation or compliance alignment features.'
+  },
+  'InterpretML':{
+    fairness:'Partial fairness support through Explainable Boosting Machines (EBMs). Microsoft.',
+    transparency:'Highest score (9/9): EBMs plus SHAP integration; global and local explanations.',
+    security:'No adversarial or privacy features.',
+    robustness:'Microsoft-backed, active GitHub. EBMs provide calibration insights.',
+    compliance:'Microsoft references NIST and EU AI Act in broader responsible AI context.'
+  },
+  'ART':{
+    fairness:'Not a fairness tool. Focused on adversarial security.',
+    transparency:'Some explanation features within adversarial context but not primary purpose.',
+    security:'Highest score (9/9): 40+ attack types, comprehensive defense mechanisms. IBM Research.',
+    robustness:'Attack success rate metrics, defense effectiveness quantification. Active IBM maintenance.',
+    compliance:'IBM Research paper connects ART to EU AI Act Art. 15 robustness requirements.'
+  },
+  'Deepchecks':{
+    fairness:'Comprehensive bias checks for protected attributes alongside data quality testing.',
+    transparency:'Test reports generated but not a dedicated XAI explanation tool.',
+    security:'Partial: out-of-distribution detection and some robustness checks. No adversarial testing.',
+    robustness:'Highest score (9/9): full lifecycle coverage from development to production monitoring.',
+    compliance:'Highest compliance score: structured HTML and JSON audit-ready reports for CI/CD pipelines.'
+  },
+  'Evidently':{
+    fairness:'Some fairness checks available but not the primary purpose of the tool.',
+    transparency:'Structured monitoring reports but not an XAI explanation tool.',
+    security:'No adversarial or privacy features.',
+    robustness:'Highest score (9/9): data drift, target drift, prediction drift, data quality. Production specialist.',
+    compliance:'Highest compliance score: designed for structured audit documentation and CI/CD integration.'
+  },
+  'MLflow':{
+    fairness:'No fairness features. Lifecycle management only.',
+    transparency:'Experiment tracking can log explanations but no built-in XAI.',
+    security:'No adversarial or privacy features.',
+    robustness:'Full lifecycle: experiment tracking, model registry, deployment monitoring. Linux Foundation.',
+    compliance:'Highest score (9/9): comprehensive audit trail, model registry, versioning. Widely cited in AI governance.'
+  },
+  'Diffprivlib':{
+    fairness:'No fairness features.',
+    transparency:'No explainability features.',
+    security:'Highest score (9/9): this is differential privacy. Protects against inference attacks during training and inference.',
+    robustness:'Primarily a training-phase tool. Limited production monitoring capabilities.',
+    compliance:'Differential privacy directly addresses GDPR data minimisation and EU AI Act privacy requirements.'
+  }
+};
+
+function getGenAIReason(name,domKey){
+  return (GENAI_REASONS[name]&&GENAI_REASONS[name][domKey])||'';
+}
+function getSafetyReason(name,domKey){
+  return (SAFETY_REASONS[name]&&SAFETY_REASONS[name][domKey])||'';
+}
+
+/* ── CONTEXT SUMMARY (Step 2) ── */
+function buildContextSummary(dims){
+  const sorted=Object.entries(dims).sort((a,b)=>b[1]-a[1]);
+  const maxD=Math.max(...Object.values(dims),1);
+  const critical=sorted.filter(([k,v])=>v/maxD>=0.65).map(([k])=>DIM_LABEL[k]);
+  const top1=DIM_LABEL[sorted[0][0]];
+
+  // Profile sentence
+  const sectorMap={healthcare:'healthcare',finance:'finance and banking',legal:'legal',hr:'HR and employment',education:'education',public:'public administration',general:'general'};
+  const dataMap={personal:'personal data',health:'health data',financial:'financial data',legal:'legal content',biometric:'biometric data',public:'publicly available data'};
+  const autoMap={full:'fully automated decisions',loop:'human-in-the-loop decisions',review:'human-reviewed decisions'};
+
+  let profile='';
+  if(ST.mode==='topic'){
+    const topicMap={fairness:'fairness and bias',transparency:'transparency and explainability',security:'security and privacy',robustness:'robustness and testing',compliance:'compliance and audit'};
+    const stageMap={exploring:'exploring options',evaluating:'evaluating an existing system',regulatory:'facing regulatory pressure',incident:'responding to a post-incident situation',procurement:'procuring a new AI system'};
+    profile=`Your consultation focuses on <strong>${topicMap[ST.topic]||ST.topic}</strong>${ST.t_sector?', in the '+sectorMap[ST.t_sector]+' sector':''}${ST.t_stage?', and you are '+stageMap[ST.t_stage]:''}. `;
+  } else {
+    const parts=[];
+    if(ST.datatype&&dataMap[ST.datatype]) parts.push(dataMap[ST.datatype]);
+    if(ST.sector&&sectorMap[ST.sector]) parts.push('in the '+sectorMap[ST.sector]+' sector');
+    if(ST.autonomy&&autoMap[ST.autonomy]) parts.push('involving '+autoMap[ST.autonomy]);
+    if(ST.rights==='yes') parts.push('with direct impact on fundamental rights');
+    if(ST.vuln==='yes') parts.push('affecting vulnerable groups');
+    profile=`Your system processes ${parts.join(', ')}. `;
+  }
+
+  // Implication sentences per critical dimension
+  const impl={
+    transparency:'Model outputs must be interpretable and explainable to affected users and oversight bodies. This is required under EU AI Act Art. 13.',
+    fairness:'Bias in automated decisions could directly harm affected individuals. Systematic bias testing and mitigation are required before deployment under EU AI Act Art. 10.',
+    security:'Sensitive data processed by this system requires strong access controls, adversarial robustness testing, and privacy-preserving mechanisms.',
+    robustness:'Continuous monitoring for model drift, performance degradation, and reliability under varied conditions is required under EU AI Act Art. 15.',
+    compliance:'A documented risk management system, technical documentation, and audit trail must be in place before deployment under EU AI Act Art. 9 and Art. 11.'
+  };
+
+  const critKey=sorted[0][0];
+  const practicalMeaning=impl[critKey]||'';
+
+  return `<div class="context-summary-box">
+    <div class="cs-profile">${profile}This places <strong>${critical.length>0?critical.join(' and '):top1}</strong> as your critical ${critical.length>1?'dimensions':'dimension'}.</div>
+    <div class="cs-implication"><span class="cs-label">What this means in practice:</span> ${practicalMeaning}</div>
+  </div>`;
+}
+
+/* ── PDF EXPORT ── */
+function exportPDF(){
+  const sysName=(document.getElementById('sys_name')?.value||document.getElementById('t_desc')?.value||'Unnamed System').substring(0,40);
+  const now=new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+  const cards=[...document.querySelectorAll('#venus_cards .vc')].map(c=>`<div class="vc"><div class="lbl">${c.querySelector('.vc-lbl')?.textContent||''}</div><div class="val">${c.querySelector('.vc-val')?.textContent||''}</div><div class="sub">${c.querySelector('.vc-sub')?.textContent||''}</div></div>`).join('');
+  const actions=[...document.querySelectorAll('#venus_actions .action-item')].map((a,i)=>`<div class="act"><b>Action ${i+1}:</b> ${a.querySelector('.action-txt')?.innerHTML||''}</div>`).join('');
+  const obls=[...document.querySelectorAll('#compliance_map .obl-row')].map(r=>{
+    const gap=!!r.querySelector('.st-gap');
+    return `<tr class="${gap?'gap':'ok'}"><td>${r.querySelector('.obl-code')?.textContent||''}</td><td><b>${r.querySelector('.obl-title')?.textContent||''}</b><br><small>${r.querySelector('.obl-ctrl')?.textContent||''}</small></td><td>${r.querySelector('.obl-st')?.textContent||''}</td></tr>`;
+  }).join('');
+  const ctx=document.getElementById('context_summary')?.innerHTML||'';
+  const tier=document.getElementById('tier_wrap')?.innerHTML||'';
+  const reason=document.getElementById('tier_reason')?.innerHTML||'';
+
+  const css=`*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Helvetica Neue',sans-serif;font-size:11px;color:#1A1917;padding:18mm;max-width:210mm;margin:0 auto}h1{font-family:Georgia,serif;font-size:22px;color:#8B7CAE;margin-bottom:4px}h2{font-family:Georgia,serif;font-size:14px;color:#8B7CAE;margin:18px 0 8px;padding-bottom:4px;border-bottom:1.5px solid #C4614A}.meta{font-size:9px;color:#888;margin-bottom:18px}.vgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}.vc{padding:10px;border:1px solid #ddd;border-radius:6px;background:#f9f6f2}.lbl{font-size:9px;font-weight:700;color:#999;text-transform:uppercase;margin-bottom:3px}.val{font-size:14px;font-weight:600;font-family:Georgia,serif}.sub{font-size:9px;color:#888;margin-top:2px}.act{padding:8px 10px;border-left:3px solid #C4614A;margin-bottom:8px;background:#fdf8f5;font-size:11px;line-height:1.6}.ctx{padding:12px;border:1.5px solid #C4BADF;border-radius:6px;background:#EDE8F5;margin-bottom:12px;font-size:11px;line-height:1.7}table{width:100%;border-collapse:collapse;font-size:10px}th{background:#f0ebe3;padding:5px 8px;text-align:left;font-size:9px;text-transform:uppercase;color:#666}td{padding:5px 8px;border-bottom:1px solid #eee;vertical-align:top}tr.gap td:last-child{color:#C4614A;font-weight:700}tr.ok td:last-child{color:#6E9E78;font-weight:700}.footer{margin-top:24px;padding-top:6px;border-top:1px solid #ddd;font-size:9px;color:#aaa;text-align:center}@media print{body{padding:0}}`;
+
+  const doc=`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>VENUS Report: ${sysName}</title><style>${css}</style></head><body><h1>VENUS ♀</h1><div class="meta">AI Safety Intelligence Report | ${sysName} | Generated: ${now}</div><h2>Context and Risk Classification</h2>${tier}<br>${reason}<h2>Safety Dimension Profile</h2><div class="ctx">${ctx}</div><h2>Analysis Summary</h2><div class="vgrid">${cards}</div><h2>Priority Actions</h2>${actions}<h2>EU AI Act Compliance Map</h2><table><tr><th>Article</th><th>Obligation and Required Control</th><th>Status</th></tr>${obls}</table><div class="footer">VENUS: AI Safety Intelligence Platform | Confidential | For audit file use</div></body></html>`;
+
+  const blob=new Blob([doc],{type:'text/html'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download='VENUS_Report_'+sysName.replace(/[^a-zA-Z0-9]/g,'_')+'.html';
+  document.body.appendChild(a);a.click();
+  setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},500);
+}
+
+/* ── GAP SCORING ── */
+const GAP_QUESTIONS_HIGH=[
+  {id:'q_risk_plan',   art:'Art. 9',  obl:['ART9-OBL1','ART9-OBL2'],
+   text:'Do you have a documented risk management plan that identifies and analyses known risks across the full AI lifecycle?'},
+  {id:'q_risk_assess', art:'Art. 9',  obl:['ART9-OBL3'],
+   text:'Have you conducted a formal risk assessment using a structured method such as severity, likelihood, and exposure scoring?'},
+  {id:'q_data_quality',art:'Art. 10', obl:['ART10-OBL1'],
+   text:'Have you established and applied data quality criteria for your training, validation, and test datasets?'},
+  {id:'q_bias_test',   art:'Art. 10', obl:['ART10-OBL2'],
+   text:'Have you systematically tested your training data for bias that could affect protected groups?'},
+  {id:'q_tech_doc',    art:'Art. 11', obl:['ART11-OBL1'],
+   text:'Is technical documentation prepared and available before market placement or deployment?'},
+  {id:'q_logging',     art:'Art. 12', obl:['ART12-OBL1'],
+   text:'Does your system automatically log events to ensure traceability throughout its operation?'},
+  {id:'q_explain',     art:'Art. 13', obl:['ART13-OBL1'],
+   text:'Can your system explain its outputs in a way that is understandable to users and oversight bodies?'},
+  {id:'q_oversight',   art:'Art. 14', obl:['ART14-OBL1'],
+   text:'Is there a functioning human oversight mechanism with the ability to monitor, intervene, and override the system?'},
+  {id:'q_accuracy',    art:'Art. 15', obl:['ART15-OBL1'],
+   text:'Have you evaluated and documented accuracy, robustness, and cybersecurity levels against defined requirements?'},
+];
+const GAP_QUESTIONS_LIMITED=[
+  {id:'q_ai_disclose', art:'Art. 50', obl:['ART50-OBL1'],
+   text:'Do you clearly inform users that they are interacting with an AI system before or at first interaction?'},
+  {id:'q_synthetic',   art:'Art. 50', obl:['ART50-OBL2'],
+   text:'Do you label AI-generated or synthetic content so it is distinguishable from human-generated content?'},
+];
+
+let gapAnswers={};
+
+function buildGapQuestions(){
+  const tier=ST.mode==='topic'?(ST.t_stage==='regulatory'||ST.t_stage==='incident'?'high':'limited'):ST.tier;
+  const qs=tier==='high'?GAP_QUESTIONS_HIGH:tier==='limited'?GAP_QUESTIONS_LIMITED:null;
+  
+  if(!qs||!qs.length){
+    document.getElementById('gap_questions_card').style.display='none';
+    document.getElementById('gap_map_card').style.display='';
+    buildComplianceFromAnswers({});
+    return;
+  }
+
+  gapAnswers={};
+  document.getElementById('gap_questions').innerHTML=qs.map(q=>`
+    <div class="gap-q">
+      <div class="gap-q-art">${q.art}</div>
+      <div class="gap-q-text">${q.text}</div>
+      <div class="gap-opts">
+        <div class="gap-opt" data-q="${q.id}" data-v="yes"   onclick="selectGap(this)">Yes, in place</div>
+        <div class="gap-opt" data-q="${q.id}" data-v="partial" onclick="selectGap(this)">Partially</div>
+        <div class="gap-opt" data-q="${q.id}" data-v="no"    onclick="selectGap(this)">Not yet</div>
+      </div>
+    </div>`).join('');
+}
+
+function selectGap(el){
+  const q=el.dataset.q;
+  const v=el.dataset.v;
+  document.querySelectorAll(`[data-q="${q}"]`).forEach(x=>{
+    x.classList.remove('sel-yes','sel-partial','sel-no');
+  });
+  el.classList.add('sel-'+v);
+  gapAnswers[q]=v;
+}
+
+function submitGapAnswers(){
+  // Check all answered
+  const tier=ST.mode==='topic'?(ST.t_stage==='regulatory'||ST.t_stage==='incident'?'high':'limited'):ST.tier;
+  const qs=tier==='high'?GAP_QUESTIONS_HIGH:GAP_QUESTIONS_LIMITED;
+  const unanswered=qs.filter(q=>!gapAnswers[q.id]);
+  if(unanswered.length){
+    // Highlight unanswered
+    unanswered.forEach(q=>{
+      const el=document.querySelector(`[data-q="${q.id}"]`)?.closest('.gap-q');
+      if(el){el.style.background='rgba(196,97,74,.06)';el.style.borderRadius='6px';el.style.padding='12px';}
+    });
+    return;
+  }
+  document.getElementById('gap_questions_card').style.display='none';
+  document.getElementById('gap_map_card').style.display='';
+  buildComplianceFromAnswers(gapAnswers);
+}
+
+function showGapQuestions(){
+  document.getElementById('gap_questions_card').style.display='';
+  document.getElementById('gap_map_card').style.display='none';
+}
+
+function buildComplianceFromAnswers(answers){
+  const tier=ST.mode==='topic'?(ST.t_stage==='regulatory'||ST.t_stage==='incident'?'high':'limited'):ST.tier;
+  const tm={high:['high'],limited:['limited'],minimal:[],prohibited:[]};
+  const rel=OBLS.filter(o=>(tm[tier]||[]).includes(o.tier));
+
+  if(!rel.length){
+    document.getElementById('compliance_map').innerHTML='<div class="info-box">No mandatory EU AI Act obligations apply to this risk tier.<br><strong>Recommendation:</strong> Complete GOVERN 1.1 and MAP 1.1 actions as good practice.</div>';
+    return;
+  }
+
+  // Build obl-id to answer map
+  const oblAnswerMap={};
+  const allQs=[...GAP_QUESTIONS_HIGH,...GAP_QUESTIONS_LIMITED];
+  allQs.forEach(q=>{
+    const ans=answers[q.id]||'unanswered';
+    q.obl.forEach(oblId=>{ oblAnswerMap[oblId]=ans; });
+  });
+
+  document.getElementById('compliance_map').innerHTML=rel.map(o=>{
+    const ans=oblAnswerMap[o.code]||'unanswered';
+    const isGap = ans==='no'||ans==='partial'||ans==='unanswered';
+    const stClass = ans==='yes'?'st-ok':'st-gap';
+    const stLabel = ans==='yes'?'OK':ans==='partial'?'Partial':'Gap';
+    return `<div class="obl-row">
+      <span class="obl-code">${o.code}</span>
+      <div><div class="obl-title">${o.title}</div><div class="obl-ctrl">${o.ctrl}</div></div>
+      <span class="obl-st ${stClass}">${stLabel}</span>
+    </div>`;
+  }).join('');
+}
+
+// Override old buildCompliance: now gap questions drive Step 4
+function buildCompliance(){
+  buildGapQuestions();
+}
+
+
+// Tooltip singleton
+const _tip=document.createElement('div');
+_tip.className='tooltip';
+document.body.appendChild(_tip);
+let _activeBtn=null;
+
+function _showTip(btn,text){
+  if(_activeBtn===btn){_hideTip();return;}
+  if(_activeBtn) _activeBtn.classList.remove('active');
+  _activeBtn=btn;
+  btn.classList.add('active');
+  _tip.textContent=text;
+  _tip.classList.add('visible');
+  const r=btn.getBoundingClientRect();
+  let left=r.left+r.width/2-115;
+  let top=r.top-_tip.offsetHeight-10;
+  if(left<8) left=8;
+  if(left+230>window.innerWidth-8) left=window.innerWidth-238;
+  if(top<8){top=r.bottom+8;}
+  _tip.style.left=left+'px';
+  _tip.style.top=top+'px';
+}
+function _hideTip(){
+  if(_activeBtn){_activeBtn.classList.remove('active');_activeBtn=null;}
+  _tip.classList.remove('visible');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.classList.contains('info-btn')) _hideTip();
+});
+
+
+
+function startTool(){
+  document.getElementById('landing_page').style.display='none';
+  document.getElementById('tool_wrapper').style.display='block';
+}
+</script>
+</body>
+</html>
